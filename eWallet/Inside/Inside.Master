@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Inside.master.cs" Inherits="eWallet.Inside.Inside" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div style="height: 50px; background-color: black; color: white; font-size: 30px; text-align: center; vertical-align: middle; font-weight: bold; font-family: 'Yu Gothic'">
+                
+                <table style="width:100%">
+                    <tr>
+                        <td style="width:70%"><span style="text-align: left">e-Wallet</span></td>
+                        <td><span style="text-align: right">Welcome dear User <asp:LinkButton ID="LogoutLinkButton" Font-Size="Small" ForeColor="White" Font-Bold="true" OnClick="LogoutLinkButton_Click" runat="server">Logout</asp:LinkButton></span></td>
+                    </tr>
+                </table>
+                
+                
+                
+            </div>
+
+        </div>
+        <table border="1" style="width:100%">
+            <tr>
+                <td style="width:10%; vertical-align:top" >
+                    <div>
+                        <a href="Dashboard.aspx">Dashboard</a>
+                    </div>
+                    <div>
+                        <a href="Profile.aspx">Profile</a>
+                    </div>
+                    <div>
+                        <a href="Transaction.aspx">Transactions</a>
+                    </div>
+
+                </td>
+                <td rowspan="2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
