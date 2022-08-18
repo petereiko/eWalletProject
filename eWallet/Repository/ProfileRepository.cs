@@ -43,7 +43,7 @@ namespace eWallet.Repository
             SqlConnection conn = new SqlConnection(cs);
             using (conn)
             {
-                string insertQuery = $"insert into UserProfiles values ('{model.FirstName}','{model.LastName}',{model.Gender},'{model.Phone}','{model.Address}',{model.StateId},20000,{userAccount.Id},getdate(),NULL,1)";
+                string insertQuery = $"insert into UserProfiles values ('{model.FirstName}','{model.LastName}',{model.Gender},'{model.Phone}','{model.Address}',{model.StateId},20000,{userAccount.Id},getdate(),NULL,1,'{model.Passport}')";
                 SqlCommand cmd = new SqlCommand(insertQuery, conn);
                 using (cmd)
                 {
@@ -59,6 +59,46 @@ namespace eWallet.Repository
             
         }
 
+
+        public Tuple<string, bool> Update(UserProfile model)
+        {
+            if (HttpContext.Current.Session["UserAccount"] == null)
+            {
+                return new Tuple<string, bool>("User session has timed out", false);
+            }
+
+            UserAccount userAccount = (UserAccount)HttpContext.Current.Session["UserAccount"];
+
+            int rowsAffected = 0;
+            string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            SqlConnection conn = new SqlConnection(cs);
+            using (conn)
+            {
+                string updateQuery = string.Empty;
+                if (string.IsNullOrEmpty(model.Passport))
+                {
+                    updateQuery = $"update UserProfiles set FirstName='{model.FirstName}', LastName='{model.LastName}', Gender={model.Gender}, Phone='{model.Phone}', Address='{model.Address}', DateUpdated=getdate() where Id=" + model.Id;
+
+                }
+                else
+                {
+                    updateQuery = $"update UserProfiles set Passport='{model.Passport}', FirstName='{model.FirstName}', LastName='{model.LastName}', Gender={model.Gender}, Phone='{model.Phone}', Address='{model.Address}', DateUpdated=getdate() where Id=" + model.Id;
+                }
+                SqlCommand cmd = new SqlCommand(updateQuery, conn);
+                using (cmd)
+                {
+                    conn.Open();
+                    rowsAffected = cmd.ExecuteNonQuery();
+                }
+            }
+            if (rowsAffected > 0)
+            {
+                return new Tuple<string, bool>("Profile has been updated successfully.", true);
+            }
+            return new Tuple<string, bool>("An error occurred while trying to update your profile.", false);
+
+        }
+
         public UserProfile GetUserProfileByUserId(int userId)
         {
             UserProfile userProfile = null;
@@ -67,7 +107,7 @@ namespace eWallet.Repository
             SqlConnection conn = new SqlConnection(cs);
             using (conn)
             {
-                string selectQuery = $"select u.FirstName, u.LastName, u.Gender, u.Phone, u.[Address], u.StateId from userprofiles u where UserId={userId}";
+                string selectQuery = $"select u.Id, u.FirstName, u.LastName, u.Gender, u.Phone, u.[Address], u.StateId, u.Passport from userprofiles u where UserId={userId}";
                 SqlDataAdapter da = new SqlDataAdapter(selectQuery, conn);
                 DataTable table = new DataTable();
                 using (da)
@@ -79,15 +119,18 @@ namespace eWallet.Repository
                     var row = table.Rows[0];
                     userProfile = new UserProfile
                     {
+                        Id = Convert.ToInt32(row["Id"]),
                         Address = row["Address"].ToString(),
                         FirstName = row["FirstName"].ToString(),
                         LastName = row["LastName"].ToString(),
                         Gender = Convert.ToInt32(row["Gender"]),
                         Phone = row["Phone"].ToString(),
-                        StateId = Convert.ToInt32(row["StateId"])
+                        StateId = Convert.ToInt32(row["StateId"]),
+                        Passport = row["Passport"].ToString()
                     };
+                    userProfile.UserId = userId;
                 }
-
+                
                 return userProfile;
 
             }

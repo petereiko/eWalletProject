@@ -15,6 +15,24 @@ namespace eWallet.Inside
     {
 
         /// <summary>
+        /// passportContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage passportContainer;
+
+        /// <summary>
+        /// profileId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden profileId;
+
+        /// <summary>
         /// txtFirstname control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace eWallet.Inside
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea txtAddress;
+
+        /// <summary>
+        /// passportFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile passportFile;
 
         /// <summary>
         /// btnSubmitProfile control.

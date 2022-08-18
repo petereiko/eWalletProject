@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWallet", "eWallet\eWallet.csproj", "{6AE9C809-B877-422B-B0D4-DBDAE9038FE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1DE47161-57B3-4822-9A7C-01F5530F1236}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6AE9C809-B877-422B-B0D4-DBDAE9038FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE9C809-B877-422B-B0D4-DBDAE9038FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE9C809-B877-422B-B0D4-DBDAE9038FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE47161-57B3-4822-9A7C-01F5530F1236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE47161-57B3-4822-9A7C-01F5530F1236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE47161-57B3-4822-9A7C-01F5530F1236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE47161-57B3-4822-9A7C-01F5530F1236}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

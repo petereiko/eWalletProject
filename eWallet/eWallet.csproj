@@ -75,6 +75,7 @@
     <Content Include="Inside\Dashboard.aspx" />
     <Content Include="Inside\Profile.aspx" />
     <Content Include="Inside\Transaction.aspx" />
+    <Content Include="script.sql" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\passports\" />
     <Folder Include="Content\scripts\" />
   </ItemGroup>
   <PropertyGroup>
