@@ -107,7 +107,7 @@ namespace eWallet.Repository
             SqlConnection conn = new SqlConnection(cs);
             using (conn)
             {
-                string selectQuery = $"select u.Id, u.FirstName, u.LastName, u.Gender, u.Phone, u.[Address], u.StateId, u.Passport from userprofiles u where UserId={userId}";
+                string selectQuery = $"select u.Id, u.FirstName, u.LastName, u.Gender, u.Phone, u.[Address], u.StateId, u.Passport, u.Balance from userprofiles u where UserId={userId}";
                 SqlDataAdapter da = new SqlDataAdapter(selectQuery, conn);
                 DataTable table = new DataTable();
                 using (da)
@@ -126,7 +126,8 @@ namespace eWallet.Repository
                         Gender = Convert.ToInt32(row["Gender"]),
                         Phone = row["Phone"].ToString(),
                         StateId = Convert.ToInt32(row["StateId"]),
-                        Passport = row["Passport"].ToString()
+                        Passport = row["Passport"].ToString(),
+                        Balance = Convert.ToDecimal(row["Balance"])
                     };
                     userProfile.UserId = userId;
                 }

@@ -59,6 +59,10 @@ namespace eWallet.Inside
                 GenderRadioButtonList.SelectedIndex = (userProfile.Gender == 1) ? 0 : 1;
                 StateDropDownList.SelectedIndex = userProfile.StateId;
                 btnSubmitProfile.Text = "Update Profile";
+                string color = "red";
+                if (userProfile.Balance > 5000)
+                    color = "green";
+                lblBalance.InnerHtml = $"Balance: ₦<span style='color:{color}; font-weight:'bold'>{userProfile.Balance.ToString("N2")}</span>";
             }
 
 

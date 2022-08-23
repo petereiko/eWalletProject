@@ -16,5 +16,6 @@ namespace eWallet.Models
         public string Address { get; set; }
         public string Passport { get; set; }
         public int UserId { get; set; }
+        public decimal Balance { get; set; }
     }
 }

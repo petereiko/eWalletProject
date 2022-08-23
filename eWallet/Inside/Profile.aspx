@@ -67,8 +67,10 @@
                     </tr>
                 </table>
             </td>
-            <td>
+            <td style="vertical-align:top">
                 <label id="lblStatus" runat="server"></label>
+                <br />
+                <label id="lblBalance" runat="server"></label>
             </td>
         </tr>
     </table>
